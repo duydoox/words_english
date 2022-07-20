@@ -10,13 +10,14 @@ const Navigation = () => {
     if (namePage === page) {
       return {
         fontWeight: 'bold',
-        color: 'red',
+        color: '#FF7F50',
         fontSize: 20,
       }
     }
     return {
       color: '#333',
-      fontSize: 20,
+      fontSize: 19,
+      fontWeight: 'bold',
     }
   }
 

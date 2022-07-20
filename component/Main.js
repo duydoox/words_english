@@ -25,10 +25,11 @@ export default Main
 
 const styles = StyleSheet.create({
     app: {
-        flex: 1
+        flex: 1,
+        backgroundColor: '#F0FFFF'
     },
     body: {
         flex: 8,
-        padding: 5
+        padding: 10
     }
 })
