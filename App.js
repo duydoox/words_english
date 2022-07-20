@@ -1,10 +1,12 @@
-import { View, Text } from 'react-native'
 import React from 'react'
+import Main from './component/Main'
+import { Provider } from 'react-redux'
+import store from './store'
 
 export default function App() {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <Provider store={store}>
+      <Main/>
+    </Provider>
   )
 }
