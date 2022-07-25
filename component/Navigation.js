@@ -9,28 +9,27 @@ const Navigation = () => {
   const getStyleSelect = namePage => {
     if (namePage === page) {
       return {
+        color: '#fff',
+        fontSize: 18,
         fontWeight: 'bold',
-        color: '#FF7F50',
-        fontSize: 20,
       }
     }
     return {
       color: '#333',
-      fontSize: 19,
-      fontWeight: 'bold',
+      fontSize: 18,
     }
   }
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>dispatch(pageTranslate())}>
-        <Text style={getStyleSelect('TRANSLATE')}>translate</Text>
+      <TouchableOpacity onPress={() => dispatch(pageTranslate())}>
+        <Text style={getStyleSelect('TRANSLATE')}>Translate</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>dispatch(pageMyWords())}>
-        <Text style={getStyleSelect('MYWORDS')}>my words</Text>
+      <TouchableOpacity onPress={() => dispatch(pageMyWords())}>
+        <Text style={getStyleSelect('MYWORDS')}>My Words</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={()=>dispatch(pageGame())}>
-        <Text style={getStyleSelect('GAME')}>game</Text>
+      <TouchableOpacity onPress={() => dispatch(pageGame())}>
+        <Text style={getStyleSelect('GAME')}>Game</Text>
       </TouchableOpacity>
     </View>
   )
@@ -43,6 +42,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: '#228B22',
   },
+  tabo: {
+    // backgroundColor: '#fff',
+    height: '100%',
+  }
 })

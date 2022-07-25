@@ -14,13 +14,17 @@ const slice = createSlice({
         },
         pageGame: (state) => {
             state.page = 'GAME'
+        },
+        toggleAddWord: (state, actions) => {
+            state.isAddWord = actions.payload
         }
     }
 })
 
-export const {pageGame, pageMyWords, pageTranslate} = slice.actions
+export const {pageGame, pageMyWords, pageTranslate, toggleAddWord} = slice.actions
 export const pageSelector = state => {
     return state.pages.page
 }
+export const selecIsAddWord = state => state.pages.isAddWord
 
 export default navigationReducer = slice.reducer
