@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 
 export const getWords = createAsyncThunk('words/getWords', async ()=> {
     try{
-        const wordsJson = await AsyncStorage.getItem('words')
+        const wordsJson = await AsyncStorage.getItem('words3')
         if(wordsJson) {
             return JSON.parse(wordsJson)
         }
@@ -12,16 +12,16 @@ export const getWords = createAsyncThunk('words/getWords', async ()=> {
     }
     return [
         { id: 1, en: 'hello', vi: 'xin chào', memorize: 100, category: 'nouns', classify: '', note: ''},
-        { id: 2, en: 'one', vi: 'một', memorize: 75, category: 'nouns', classify: '', note: ''},
-        { id: 3, en: 'eat', vi: 'ăn', memorize: 40, category: 'verb', classify: '', note: ''},
-        { id: 4, en: 'two', vi: 'một', memorize: 74, category: 'nouns', classify: '', note: 'haha haha haha haha haha haha haha haha haha haha haha haha haha haha haha'},
-        { id: 5, en: 'three', vi: 'một', memorize: 80, category: 'nouns', classify: '', note: 'haha'},
+        { id: 2, en: 'shoes', vi: 'đôi giày', memorize: 75, category: 'nouns', classify: '', note: 'danh từ số nhiều'},
+        { id: 3, en: 'hard', vi: 'chăm chỉ', memorize: 40, category: 'adverb', classify: '', note: ''},
+        { id: 4, en: 'hardly', vi: 'chăm chỉ', memorize: 74, category: 'adverb', classify: '', note: 'hầu như không'},
+        { id: 5, en: 'glass', vi: 'cái kính', memorize: 80, category: 'nouns', classify: '', note: ''},
     ]
 })
 
 const saveWords = async (items) => {
     try{
-        await AsyncStorage.setItem('words', JSON.stringify(items))
+        await AsyncStorage.setItem('words3', JSON.stringify(items))
     }catch(err){
         console.log(err)
     }

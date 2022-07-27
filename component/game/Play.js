@@ -16,7 +16,7 @@ const Play = ({words}) => {
             const index = Math.floor(Math.random() * len)
             return words[index]
         }
-        // return {en: '', vi: '', id: null}
+        return {en: '', vi: '', id: null, memorize: 100}
     }
 
     const createQuestion = () => {
@@ -31,8 +31,13 @@ const Play = ({words}) => {
 
     const createAnswers = (words, question) => {
         const listAnswer = new Set([question.vi])
-        while (listAnswer.size < words.length && listAnswer.size < 4) {
-            listAnswer.add(randomWord(words).vi)
+        const approved = new Set([question.id])
+        let len = words.length
+        let random
+        while (approved.size < len && listAnswer.size < 4) {
+            random = randomWord(words)
+            approved.add(random.id)
+            listAnswer.add(random.vi)
         }
         setAnswers([...listAnswer].sort(() => Math.random() - 0.5))
     }
