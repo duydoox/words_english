@@ -11,17 +11,11 @@ export const getWords = createAsyncThunk('words/getWords', async ()=> {
         console.log(err)
     }
     return [
-        { id: 1, en: 'hello', vi: 'xin chào', memorize: 100, category: 'adjective', classify: '', note: ''},
+        { id: 1, en: 'hello', vi: 'xin chào', memorize: 100, category: 'nouns', classify: '', note: ''},
         { id: 2, en: 'one', vi: 'một', memorize: 75, category: 'nouns', classify: '', note: ''},
         { id: 3, en: 'eat', vi: 'ăn', memorize: 40, category: 'verb', classify: '', note: ''},
-        { id: 4, en: 'one', vi: 'một', memorize: 74, category: 'nouns', classify: '', note: 'haha haha haha haha haha haha haha haha haha haha haha haha haha haha haha'},
-        { id: 5, en: 'one', vi: 'một', memorize: 80, category: 'nouns', classify: '', note: 'haha'},
-        { id: 6, en: 'one', vi: 'một', memorize: 20, category: 'nouns', classify: '', note: ''},
-        { id: 7, en: 'one', vi: 'một', memorize: 10, category: 'nouns', classify: '', note: ''},
-        { id: 8, en: 'one', vi: 'một', memorize: 50, category: 'nouns', classify: '', note: ''},
-        { id: 9, en: 'one', vi: 'một', memorize: 90, category: 'nouns', classify: '', note: ''},
-        { id: 10, en: 'one', vi: 'một', memorize: 30, category: 'nouns', classify: '', note: ''},
-        { id: 11, en: 'one', vi: 'một', memorize: 65, category: 'nouns', classify: '', note: ''},
+        { id: 4, en: 'two', vi: 'một', memorize: 74, category: 'nouns', classify: '', note: 'haha haha haha haha haha haha haha haha haha haha haha haha haha haha haha'},
+        { id: 5, en: 'three', vi: 'một', memorize: 80, category: 'nouns', classify: '', note: 'haha'},
     ]
 })
 
@@ -60,6 +54,19 @@ const slice = createSlice({
         deleteWord(state, action){
             state.listWords = state.listWords.filter((word)=> word.id !== action.payload)
             saveWords(state.listWords)
+        },
+        increaseMemorize(state, action){
+            state.listWords.map(word=>{
+                if(word.id===action.payload.id){
+                    if(action.payload.inc){
+                        word.memorize = 1.2*word.memorize <=100 ? 1.2*word.memorize : 100
+                    }
+                    else{
+                        word.memorize = 0.95*word.memorize >=5 ? 0.95*word.memorize : 5
+                    }
+                }
+            })
+            saveWords(state.listWords)
         }
     },
     extraReducers: builder => {
@@ -73,7 +80,7 @@ const slice = createSlice({
     }
 })
 
-export const { addWord, deleteWord } = slice.actions
+export const { addWord, deleteWord, increaseMemorize } = slice.actions
 export const wordsSelector = state => state.words.listWords
 
 export default wordsReducer = slice.reducer

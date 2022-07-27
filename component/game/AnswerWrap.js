@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Game = () => {
+const AnswerWrap = () => {
   return (
     <View>
-      <Text>Game</Text>
+      <Text>AnswerWrap</Text>
     </View>
   )
 }
 
-export default Game
+export default AnswerWrap
 
 const styles = StyleSheet.create({})

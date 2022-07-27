@@ -1,4 +1,4 @@
-import { StyleSheet, Text, Animated, Dimensions, TouchableOpacity, TextInput, View, FlatList } from 'react-native'
+import { StyleSheet, Text, Animated, Dimensions, TouchableOpacity, TextInput, View, FlatList, Keyboard } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { toggleAddWord } from '../features/navigationSlice'
@@ -62,7 +62,10 @@ const AddWord = () => {
         value={word.note} onChangeText={text => setWord({ ...word, note: text })} />
 
       <View>
-        <TouchableOpacity onPress={() => setIsShowCategory(!isShowCategory)}>
+        <TouchableOpacity onPress={() => {
+          Keyboard.dismiss()
+          setIsShowCategory(!isShowCategory)
+        }}>
           <Text>{word.category === '' ? 'category' : word.category}</Text>
         </TouchableOpacity>
         {isShowCategory &&
